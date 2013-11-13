@@ -1,0 +1,44 @@
+<head>
+  <title>Leaderboard</title>
+</head>
+
+<body>
+  <div id="outer">
+    {{> input }}
+    {{> leaderboard}}
+   
+  </div>
+</body>
+
+<template name="leaderboard">
+  <div class="leaderboard">
+    {{#each players}}
+      {{> player}}
+    {{/each}}
+  </div>
+
+  {{#if selected_name}}
+  <div class="details">
+    <div class="name">{{selected_name}}</div>
+    <p><input type="button" class="inc" value="Give 5 points" />
+    <button id="remove"> Remove </button></p>
+  </div>
+  {{/if}}
+
+  {{#unless selected_name}}
+  <div class="none">Click a player to select</div>
+  {{/unless}}
+</template>
+
+<template name="player">
+  <div class="player {{selected}}">
+    <span class="name">{{name}}</span>
+    <span class="score">{{score}}</span>
+  </div>
+</template>
+
+<template name="input">
+   <p> Científico: <input type = 'text' id = "cient"> <button id="add">Add</button><button id="reset">Reset All</button></p>
+   <p><a href="#" id="sortname">Sort by Name/</a><a href="#" id="sortscore"> Sort by Score</a></p>
+</template>
+
